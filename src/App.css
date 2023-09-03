@@ -1,0 +1,26 @@
+/* App.css */
+body {
+    margin: 0; /* Reset margin to avoid unwanted spacing */
+    padding: 0; /* Reset padding */
+}
+
+#root {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+
+
+/* .cursor {
+	position: fixed;
+	width: 10px;
+	height: 10px;
+	background-color: honeydew;
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 9999;
+	transition: transform 0.8s ease, opacity 0.8s ease;
+	transform: translate(-50%, -50%);
+	opacity: 1;
+} */
+

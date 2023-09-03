@@ -1,0 +1,28 @@
+/* .commonBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+} */
+.login-class {
+    color: rgb(178, 93, 51) !important;
+}
+
+.make-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.image-design {
+    border: 0.1px solid rgb(204, 202, 202);
+    height: 50px;
+    width: 50px;
+    padding: 2px;
+    object-fit: cover;
+    border-radius: 50%;
+}
