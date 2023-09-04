@@ -61,7 +61,7 @@ const Sidebar = (props) => {
             QuerySnapshot.forEach((doc) => {
                 fetchedMessages.push({ ...doc.data(), id: doc.id });
             });
-            const sortedMessages = fetchedMessages.toSorted(
+            const sortedMessages = Array.isArray(fetchedMessages) && fetchedMessages?.length && fetchedMessages?.toSorted(
                 (a, b) => a.createdAt - b.createdAt
             );
             setData(sortedMessages);
