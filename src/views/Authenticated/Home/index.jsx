@@ -57,7 +57,7 @@ const Home = () => {
 										/>
 									): (
 
-										<img src={IMAGES.chatSvg} alt="chat_svg" />
+										<img src={IMAGES?.chatSvg} alt="chat_svg" />
 									)}
 								</div>
 							</div>
