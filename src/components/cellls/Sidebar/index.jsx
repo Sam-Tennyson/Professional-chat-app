@@ -121,6 +121,7 @@ const Sidebar = (props) => {
     }
 
     const handleSearch = async () => {
+        debugger;
         const q = query(
             collection(db, COLLECTIONS.REGISTER_USER),
             search && where("displayName", "==", search)
@@ -132,7 +133,7 @@ const Sidebar = (props) => {
                 fetchedMessages.push({ ...doc.data(), id: doc.uid });
             });
             console.log(fetchedMessages);
-            const sortedMessages = fetchedMessages.toSorted(
+            const sortedMessages =  Array.isArray(fetchedMessages) && fetchedMessages?.length && fetchedMessages?.toSorted(
                 (a, b) => a.createdAt - b.createdAt
             );
             setData(sortedMessages);
