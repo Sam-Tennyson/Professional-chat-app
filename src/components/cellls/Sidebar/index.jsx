@@ -61,10 +61,11 @@ const Sidebar = (props) => {
             QuerySnapshot.forEach((doc) => {
                 fetchedMessages.push({ ...doc.data(), id: doc.id });
             });
-            const sortedMessages = Array.isArray(fetchedMessages) && fetchedMessages?.length && fetchedMessages?.toSorted(
-                (a, b) => a.createdAt - b.createdAt
-            );
-            setData(sortedMessages);
+            // const sortedMessages = Array.isArray(fetchedMessages) && fetchedMessages?.length && fetchedMessages?.toSorted(
+            //     (a, b) => a.createdAt - b.createdAt
+            // );
+            // setData(sortedMessages);
+            setData(fetchedMessages)
         });
         return () => unsubscribe;
     }, []);
@@ -133,10 +134,11 @@ const Sidebar = (props) => {
                 fetchedMessages.push({ ...doc.data(), id: doc.uid });
             });
             console.log(fetchedMessages);
-            const sortedMessages =  Array.isArray(fetchedMessages) && fetchedMessages?.length && fetchedMessages?.toSorted(
-                (a, b) => a.createdAt - b.createdAt
-            );
-            setData(sortedMessages);
+            // const sortedMessages =  Array.isArray(fetchedMessages) && fetchedMessages?.length && fetchedMessages?.toSorted(
+            //     (a, b) => a.createdAt - b.createdAt
+            // );
+            // setData(sortedMessages);
+            setData(fetchedMessages)
 
         } catch (e) {
             console.log(e);
