@@ -54,6 +54,7 @@ const Home = () => {
 									{profileClick ? (
 										<Profile 
 											setProfileClick={setProfileClick}
+											setSelectedUser={setSelectedUser}
 										/>
 									): (
 

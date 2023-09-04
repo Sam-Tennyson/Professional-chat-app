@@ -13,7 +13,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 const Profile = (props) => {
 
-	const {setProfileClick} = props
+	const {setProfileClick, setSelectedUser = () =>{}} = props
 
 	const dispatch = useDispatch();
 
