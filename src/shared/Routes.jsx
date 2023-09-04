@@ -1,5 +1,6 @@
 export const ROUTES_CONSTANT = {
     HOME: "",
     LOGIN: "/login",
-    SIGN_UP: "/signup"
+    SIGN_UP: "/signup",
+    PROFILE: "/profile",
 }

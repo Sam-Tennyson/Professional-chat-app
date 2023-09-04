@@ -20,3 +20,7 @@ export const RESPONSIVE = {
     BREAKPOINT_MOBILE: { MAX_WIDTH: 767 },
     BREAKPOINT_NOT_MOBILE: { MIN_WIDTH: 768 }  // desktop or tablet or laptop
 }
+
+export const ERROR_MESSAGE = {
+    FIELD_REQUIRED: "Required Fields are missing ! 🙂"
+}

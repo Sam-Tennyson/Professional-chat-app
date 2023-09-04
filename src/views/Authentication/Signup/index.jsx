@@ -1,7 +1,7 @@
 // libs
 import { NavLink, useNavigate } from 'react-router-dom';
 import Snackbar from '../../../shared/Snackbar';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // firebase
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -10,7 +10,7 @@ import { doc, setDoc, serverTimestamp } from 'firebase/firestore';
 import { auth, db, storage } from '../../../firebase';
 
 // constant
-import { COLLECTIONS, STRINGS_DATA } from '../../../shared/Constants';
+import { COLLECTIONS, RESPONSIVE, STRINGS_DATA } from '../../../shared/Constants';
 import { ROUTES_CONSTANT } from '../../../shared/Routes';
 import CommonUploadButton from '../../../components/atoms/CommonUploadButton';
 import { useDispatch } from 'react-redux';
@@ -94,6 +94,8 @@ const Signup = () => {
 
     }
 
+
+
     return (
         < >
             {/* <section> */}
@@ -176,7 +178,7 @@ const Signup = () => {
 
                                     </div>
                                 </div>
-                                <div className="card text-white side-color py-5 d-none d-sm-block make-flex-center" >
+                                <div className="card text-white side-color py-5 " >
                                     <div className="card-body text-center">
                                         <div>
                                             <h2>Welcome</h2>

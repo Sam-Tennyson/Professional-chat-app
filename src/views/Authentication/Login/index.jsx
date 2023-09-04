@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from "../../../firebase"
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +6,9 @@ import { ROUTES_CONSTANT } from '../../../shared/Routes';
 
 // import "../style.css"
 import { useDispatch } from 'react-redux';
-import { setUpdatedToken, setUserData } from '../../../redux/Actions/Auth';
+import { setUpdatedToken, setUserData, startLoader, stopLoader } from '../../../redux/Actions/Auth';
 import Snackbar from '../../../shared/Snackbar';
+import { ERROR_MESSAGE, RESPONSIVE } from '../../../shared/Constants';
 
 function Login() {
 
@@ -19,27 +20,33 @@ function Login() {
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
-		if (!email || !password) return;
+		if (!email || !password) {
+			Snackbar.error(ERROR_MESSAGE.FIELD_REQUIRED);
+			return;
+		};
 
-		await signInWithEmailAndPassword(auth, email, password)
-			.then((userCredential) => {
-				// Signed in
-				const user = userCredential.user;
-				console.log(user);
-				dispatch(setUserData(user))
-				dispatch(setUpdatedToken(user?.stsTokenManager?.accessToken))
-				// navigate("/login")
-				// ...
-			})
-			.catch((error) => {
-				Snackbar.error(error.message);
-			});
+		try {
+			dispatch(startLoader())
+			const userCredential = await signInWithEmailAndPassword(auth, email, password)
+			const user = userCredential.user;
+			console.log(user);
+			dispatch(setUserData(user))
+			dispatch(setUpdatedToken(user?.stsTokenManager?.accessToken))
+			dispatch(stopLoader())
+
+		} catch (error) {
+			dispatch(stopLoader())
+			Snackbar.error(error.message);
+		}
+
 	}
+
+
 
 	return (
 		<>
 
-				<div className="mt-4 commonBox p-3">
+			<div className="mt-4 commonBox p-3">
 				<div className="row">
 					<div className="col-12 m-auto">
 						<div className="card-group  mb-0">
@@ -48,8 +55,8 @@ function Login() {
 									<h1>Login</h1>
 									<p >Sign In to your account</p>
 									<div className="mb-3">
-									<span className="input-group-addon"><i className="fa fa-user"></i></span>
-										<input 
+										<span className="input-group-addon"><i className="fa fa-user"></i></span>
+										<input
 											type="email"
 											label="Email address"
 											value={email}
@@ -60,9 +67,9 @@ function Login() {
 										/>
 									</div>
 									<div className="mb-3">
-									<span className="input-group-addon"><i className="fa fa-lock"></i></span>
+										<span className="input-group-addon"><i className="fa fa-lock"></i></span>
 										<input
-										className='form-control'
+											className='form-control'
 											type="password"
 											label="Create password"
 											value={password}
@@ -71,7 +78,7 @@ function Login() {
 											placeholder="Enter your password"
 										/>
 									</div>
-									
+
 									<div className="row">
 										<div className="col-6">
 											<button type="button" className="my-btn px-4" onClick={onSubmit}>Login</button>
@@ -79,21 +86,22 @@ function Login() {
 
 									</div>
 								</div>
+								
 							</div>
-							<div className="card text-white side-color py-5 d-none d-sm-block" >
+							<div className="card text-white side-color py-5 " >
 								<div className="card-body make-flex-center  text-center">
 									<div>
 										<h2>For New Members</h2>
-										<p>Pleae Join Us Now</p>
+										<p>Please Join Us Now</p>
 										<button type="button" onClick={() => navigate({ pathname: ROUTES_CONSTANT.SIGN_UP })} className="my-btn mt-3">Register Now!</button>
 									</div>
 								</div>
 							</div>
 						</div>
-						</div>
 					</div>
 				</div>
-				{/* <div className="">
+			</div>
+			{/* <div className="">
 					<div className="">
 						<div className="d-flex align-items-center mb-0">
 							<div className="card p-4">
@@ -142,7 +150,7 @@ function Login() {
 						</div>
 					</div>
 				</div> */}
-	
+
 		</>
 	)
 }

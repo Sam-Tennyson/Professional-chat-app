@@ -31,6 +31,12 @@
     transition: .5s
 }
 
+.people-list .chat-list  {
+    max-height: 550px;
+    height: 550px;
+    overflow-y: auto;
+}
+
 .people-list .chat-list li {
     padding: 10px 0;
     list-style: none;
@@ -109,7 +115,7 @@
 
 
 .chat .chat-history ul {
-    padding: 0
+    padding: 0;
 }
 
 .chat .chat-history ul li {
@@ -179,7 +185,8 @@
 
 .chat .chat-history .other-message {
     background: #e8f1f3;
-    text-align: right
+    text-align: right;
+    word-break: break-all;
 }
 
 .chat .chat-history .other-message:after {
@@ -222,9 +229,9 @@
 
 @media only screen and (max-width: 767px) {
     .chat-app .people-list {
-        height: 465px;
+        /* height: 465px; */
         width: 100%;
-        overflow-x: auto;
+        /* overflow-x: auto; */
         background: #fff;
         /* left: -400px;
         display: none */
@@ -239,7 +246,7 @@
         border-radius: 0.55rem 0.55rem 0 0
     }
     .chat-app .chat-history {
-        height: 300px;
+        /* height: 300px; */
         overflow-x: auto
     }
 }

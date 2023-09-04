@@ -38,6 +38,7 @@ function App() {
 				style={{ left: cursorPosition.x, top: cursorPosition.y }}
 			></div>
 			<Provider store={PERSIST_STORE.store}>
+			<Loader />
 				<SnackbarProvider
 					anchorOrigin={{
 						vertical: STRINGS_DATA.TOP,
@@ -45,7 +46,6 @@ function App() {
 					}}
 					maxSnack={3}
 				>
-					<Loader />
 					<PersistGate persistor={PERSIST_STORE.persistor}>
 						<SnackbarUtilConfig />
 						<RootRouter />

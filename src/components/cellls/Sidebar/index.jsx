@@ -25,7 +25,7 @@ import Snackbar from '../../../shared/Snackbar';
 
 const Sidebar = (props) => {
 
-    const { setSelectedUser } = props
+    const { setSelectedUser, setProfileClick } = props
     const dispatch = useDispatch();
 
     const [data, setData] = useState([])
@@ -150,7 +150,12 @@ const Sidebar = (props) => {
     return (
         <>
             <div className="d-flex justify-content-between align-items-center flex-wrap profile-header mb-2">
-                <i>
+                <i
+                    onClick={() => {
+                        setSelectedUser(STRINGS_DATA.EMPTY_STRING)
+                        setProfileClick(true)
+                    }}
+                >
                     <img
                         src={dataRed?.photoURL}
                         alt="user-photo"

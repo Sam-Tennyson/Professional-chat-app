@@ -28,19 +28,19 @@ const ChatHeader = (props) => {
             {selectedUser ? (
                 <>
                 <div className="d-flex justify-content-between align-items-center">
-                    <div className="profile-header">
+                    <div className="profile-header d-flex justify-content-start align-items-center">
                         <img 
                             src={selectedUser?.photoURL} 
                             alt="avatar" 
                         />
                         
-                        <div className="chat-about">
+                        <div className="chat-about ms-3">
                             <h6 className="m-b-0">{selectedUser?.displayName}</h6>
                             {/* <small>Last seen: 2 hours ago</small> */}
                         </div>
                     </div>
                     <div className="d-flex justify-content-end text-right">
-                        <a className="btn btn-outline-info mx-2"><i className="fa fa-cogs"><FontAwesomeIcon icon={faCogs} /></i></a>
+                        {/* <a className="btn btn-outline-info mx-2"><i className="fa fa-cogs"><FontAwesomeIcon icon={faCogs} /></i></a> */}
 
                         <a className={`btn btn-outline-danger ${isMobile ? "": "d-none"} `} id="back-button"
                             onClick={() => setSelectedUser(STRINGS_DATA.EMPTY_STRING)}
