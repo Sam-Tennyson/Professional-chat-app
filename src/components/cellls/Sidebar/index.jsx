@@ -131,6 +131,7 @@ const Sidebar = (props) => {
             querySnapShot.forEach((doc) => {
                 fetchedMessages.push({ ...doc.data(), id: doc.uid });
             });
+            console.log(fetchedMessages);
             const sortedMessages = fetchedMessages.toSorted(
                 (a, b) => a.createdAt - b.createdAt
             );
