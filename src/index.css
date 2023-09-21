@@ -11,6 +11,11 @@
 	opacity: 1;
 } */
 
+:root {
+	--primary-color: #c17474;
+	--secondary-color: rgb(110, 194, 110);
+}
+
 .side-button {
 	position: absolute;
 	left: 5;
@@ -18,20 +23,36 @@
 }
 
 body {
-	background: rgb(206, 152, 136);
+    margin: 0; 
+    padding: 0; 
+	height: 100% !important;
+	width: 100% !important;
+	background: rgb(216, 209, 209);
+	/* background: var(--primary-color); */
+	/* background: linear-gradient(#e66465, #9198e5); */
 }
 
 .side-color {
-    background: rgb(236, 162, 125); /* Replace with your desired background color */
+    background: var(--secondary-color); 
+}
 
+.side-color .card-body {
+	border: 1px solid #fff;
+	border-radius: 8px;
+}
+
+.commonBox {
+	/* border: 1px solid #6b6b6b; */
+	border-radius: 8px;
+	/* box-shadow: 0 3px 3px var(--primary-color); */
 }
 
 .my-btn {
 	background: #fff;
 	padding: 10px 12px;
-	color:rgb(178, 93, 51);
+	color:var(--primary-color);
 	font-weight: 800;
-	border: 2px solid rgb(178, 93, 51);
+	border: 2px solid var(--primary-color);
 	border-radius: 8px;
 }
 

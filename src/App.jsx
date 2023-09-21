@@ -33,10 +33,7 @@ function App() {
 
 	return (
 		<>
-			<div
-				className="cursor"
-				style={{ left: cursorPosition.x, top: cursorPosition.y }}
-			></div>
+
 			<Provider store={PERSIST_STORE.store}>
 			<Loader />
 				<SnackbarProvider

@@ -5,6 +5,7 @@ import { faClose, faCogs } from '@fortawesome/free-solid-svg-icons';
 
 // constants
 import { RESPONSIVE, STRINGS_DATA } from '../../../shared/Constants';
+import { IMAGES } from '../../../shared/Images';
 
 const ChatHeader = (props) => {
     let {selectedUser,setSelectedUser} = props
@@ -30,7 +31,7 @@ const ChatHeader = (props) => {
                 <div className="d-flex justify-content-between align-items-center">
                     <div className="profile-header d-flex justify-content-start align-items-center">
                         <img 
-                            src={selectedUser?.photoURL} 
+                            src={selectedUser?.photoURL || IMAGES.userIcon} 
                             alt="avatar" 
                         />
                         
@@ -42,7 +43,7 @@ const ChatHeader = (props) => {
                     <div className="d-flex justify-content-end text-right">
                         {/* <a className="btn btn-outline-info mx-2"><i className="fa fa-cogs"><FontAwesomeIcon icon={faCogs} /></i></a> */}
 
-                        <a className={`btn btn-outline-danger ${isMobile ? "": "d-none"} `} id="back-button"
+                        <a className={`my-btn-outline-danger ${isMobile ? "": "d-none"} `} id="back-button"
                             onClick={() => setSelectedUser(STRINGS_DATA.EMPTY_STRING)}
                         ><i className="fa fa-cogs" > 
                             <FontAwesomeIcon icon={faClose} />

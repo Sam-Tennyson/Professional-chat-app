@@ -22,10 +22,11 @@ import CommonSearch from '../../atoms/CommonSearch';
 // styles
 import "./style.css"
 import Snackbar from '../../../shared/Snackbar';
+import { IMAGES } from '../../../shared/Images';
 
 const Sidebar = (props) => {
 
-    const { setSelectedUser, setProfileClick } = props
+    const { setSelectedUser =() => {}, setProfileClick=() =>{} } = props
     const dispatch = useDispatch();
 
     const [data, setData] = useState([])
@@ -51,8 +52,8 @@ const Sidebar = (props) => {
 
     useEffect(() => {
         const q = query(
-            collection(db, COLLECTIONS.REGISTER_USER),
-            where('uid', '!=', sender_Id_Red),
+            collection(db, COLLECTIONS?.REGISTER_USER),
+            where('uid', '!=', sender_Id_Red || (STRINGS_DATA.EMPTY_STRING)),
             orderBy("uid"),
             limit(50)
         );
@@ -75,7 +76,6 @@ const Sidebar = (props) => {
             const unsub = onSnapshot(doc(db, COLLECTIONS.USER_CHAT_DATA, dataRed?.uid), (doc) => {
                 console.log(doc.data())
                 let dataa = doc.data()
-                console.log(Object.entries(dataa))
                 // setData(Object.entries(dataa))
                 // doc.exists() && setVisible(true)
             });
@@ -149,8 +149,6 @@ const Sidebar = (props) => {
         e.code === "Enter" && handleSearch();
     };
 
-    console.log(data);
-
     return (
         <>
             <div className="d-flex justify-content-between align-items-center flex-wrap profile-header mb-2">
@@ -161,7 +159,7 @@ const Sidebar = (props) => {
                     }}
                 >
                     <img
-                        src={dataRed?.photoURL}
+                        src={dataRed?.photoURL || IMAGES.userIcon}
                         alt="user-photo"
                     />
                 </i>
@@ -177,7 +175,7 @@ const Sidebar = (props) => {
                 handleSearch={() => search && handleSearch}
             />
 
-            <ul className="list-unstyled chat-list mt-2 mb-0">
+            <ul className="list-unstyled chat-list mt-2 mb-0 text-capitalize">
                 {data?.length ? (<>
                     {data?.map((data) => (
                         <li className="clearfix d-flex justify-content-start align-items-center" key={data?.id}

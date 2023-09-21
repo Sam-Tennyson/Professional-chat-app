@@ -15,6 +15,10 @@ import { ROUTES_CONSTANT } from '../../../shared/Routes';
 import CommonUploadButton from '../../../components/atoms/CommonUploadButton';
 import { useDispatch } from 'react-redux';
 import { startLoader, stopLoader } from '../../../redux/Actions/Auth';
+import { IMAGES } from '../../../shared/Images';
+
+// styles
+import "../style.css"
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -23,7 +27,8 @@ const Signup = () => {
     const [email, setEmail] = useState(STRINGS_DATA.EMPTY_STRING)
     const [password, setPassword] = useState(STRINGS_DATA.EMPTY_STRING);
     const [img, setImg] = useState(STRINGS_DATA.EMPTY_STRING)
-    const [displayName, setDisplayName] = useState(STRINGS_DATA.EMPTY_STRING)
+    const [displayName, setDisplayName] = useState(STRINGS_DATA.EMPTY_STRING);
+	const [showPassword, setShowPassword] = useState(false);
 
     const resetData = () => {
         setPassword(STRINGS_DATA.EMPTY_STRING)
@@ -33,7 +38,7 @@ const Signup = () => {
     }
 
     const getImageURL = async (data) => {
-        
+
         if (!displayName) {
             Snackbar.error("User name is required");
             return
@@ -52,7 +57,7 @@ const Signup = () => {
             Snackbar.error(error.message);
         }
     }
-    
+
     const onSubmit = async (e) => {
         e.preventDefault()
 
@@ -60,17 +65,17 @@ const Signup = () => {
             Snackbar.error("Required fields are missing")
             return
         };
-        
+
         try {
             dispatch(startLoader())
             const res = await createUserWithEmailAndPassword(auth, email, password);
-    
+
             //Update profile
             await updateProfile(res.user, {
                 displayName,
                 photoURL: img,
             });
-    
+
             let obj_Data = {
                 uid: res.user.uid,
                 displayName,
@@ -78,14 +83,14 @@ const Signup = () => {
                 createdAt: serverTimestamp(),
                 email,
             }
-            
+
             //create user on firestore
             await setDoc(doc(db, COLLECTIONS.REGISTER_USER, res.user.uid), obj_Data);
             await setDoc(doc(db, COLLECTIONS.USER_CHAT_DATA, res.user.uid), {});
             dispatch(stopLoader())
             navigate({ pathname: ROUTES_CONSTANT.LOGIN })
             resetData()
-            
+
         } catch (error) {
             resetData()
             Snackbar.error(error.message);
@@ -99,16 +104,20 @@ const Signup = () => {
     return (
         < >
             {/* <section> */}
-                <div className="mt-4 commonBox p-3 ">
-                    <div className="row">
-                        <div className="col-12 m-auto">
-                            <div className="card-group mb-0">
-                                <div className="card p-4">
-                                    <div className="card-body login-class">
-                                    <h1> Sign up </h1>
-                                    <p>Registration new account</p>
+            <div className="mt-4 commonBox p-2">
+                <div className="row">
+                    <div className="col-12 m-auto">
+                        <div className="card-group mb-0">
+                            <div className="card p-4">
+                                <div className="card-body login-class">
+                                    <div className="text-center">
+
+                                        <h1> Sign up </h1>
+                                        <p>Create a new account</p>
+                                    </div>
                                     <form id="registration">
                                         <div className="mb-3">
+                                            <label htmlFor="username">Username</label>
                                             <input
                                                 type="text"
                                                 label="Username"
@@ -121,6 +130,7 @@ const Signup = () => {
                                             />
                                         </div>
                                         <div className="mb-3">
+                                            <label htmlFor="username">Email</label>
                                             <input
                                                 type="email"
                                                 id="email-address"
@@ -133,8 +143,9 @@ const Signup = () => {
                                             />
                                         </div>
                                         <div className="mb-3">
+                                            <label htmlFor="username">Password</label>
                                             <input
-                                                type="password"
+                                                type={!showPassword ? "password" : "text"}
                                                 label="Create password"
                                                 id={"password"}
                                                 className='form-control'
@@ -144,6 +155,13 @@ const Signup = () => {
                                                 placeholder="Enter your password"
                                             />
                                         </div>
+                                        <div className="col-12 my-2 ">
+										<input className="form-check-input" id='show-pass' type="checkbox" onClick={() => setShowPassword((prev) => !prev)} />
+										<label className="form-check-label mx-2" htmlFor='show-pass'>
+											{" "}
+											Show password
+										</label>
+									</div>
                                         <div className="mb-3">
                                             <CommonUploadButton
                                                 imageUrl={img}
@@ -161,44 +179,49 @@ const Signup = () => {
                                                         getImageURL(selectedFile)
                                                     }
                                                 }}
-                                            
+
                                             />
                                         </div>
+                                        <div className="col-12 text-center">
 
                                         <button
                                             type="submit"
                                             className='my-btn'
                                             id={"submit-button"}
                                             onClick={onSubmit}
-                                        >
+                                            >
                                             Sign up
                                         </button>
+                                            </div>
 
                                     </form>
 
-                                    </div>
                                 </div>
-                                <div className="card text-white side-color py-5 " >
-                                    <div className="card-body text-center">
-                                        <div>
-                                            <h2>Welcome</h2>
-                                            <p>
-                                                Already have an account?{' '}
-                                            </p>
-                                                <button
-                                                    type="button"
-                                                    onClick={() => navigate({ pathname: ROUTES_CONSTANT.LOGIN })}
-                                                    className="my-btn mt-3"
-                                                >{STRINGS_DATA.LOGIN}
-                                                </button>
+                            </div>
+                            <div className="card text-white side-color p-3 " >
+                                <div className="card-body text-center">
+                                    <div>
+                                        <h2>Welcome</h2>
+                                        <p>
+                                            Already have an account?{' '}
+                                        </p>
+                                        <button
+                                            type="button"
+                                            onClick={() => navigate({ pathname: ROUTES_CONSTANT.LOGIN })}
+                                            className="my-btn mt-3"
+                                        >{STRINGS_DATA.LOGIN}
+                                        </button>
 
-                                        </div>
                                     </div>
+                                    <em>
+                                        <img src={IMAGES.gossip_image} alt="gossip_image" />
+                                    </em>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             {/* </section> */}
         </>
     )

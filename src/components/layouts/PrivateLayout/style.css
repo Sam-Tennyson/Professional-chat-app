@@ -15,6 +15,7 @@
     left: 0;
     top: 0;
     padding: 12px;
+    background: var(--primary-color);
     z-index: 7;
 }
 
@@ -40,7 +41,8 @@
 .people-list .chat-list li {
     padding: 10px 0;
     list-style: none;
-    border-radius: 3px
+    border-radius: 3px;
+    color: #fff;
 }
 
 .people-list .chat-list li:hover {
@@ -57,7 +59,7 @@
 }
 
 .people-list .chat-list img {
-    border: 0.1px solid rgb(204, 202, 202);
+    border: 2px solid #fff;
     height: 50px;
     width: 50px;
     padding: 2px;
@@ -76,18 +78,30 @@
 }
 
 .people-list .status {
-    color: #999;
+    color: #fff;
     font-size: 13px
 }
 
 .chat .chat-header {
     padding: 15px 18px;
+    background: var(--secondary-color);
+    color: #fff;
     border-bottom: 2px solid #f4f7f6
 }
 
 .chat .chat-header img {
     /* float: left; */
-    border: 0.1px solid rgb(204, 202, 202);
+    border: 2px solid #fff;
+    height: 50px;
+    width: 50px;
+    padding: 2px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.profile-image-class{
+    /* float: left; */
+    border: 2px solid #fff;
     height: 50px;
     width: 50px;
     padding: 2px;
@@ -187,11 +201,13 @@
     background: #e8f1f3;
     text-align: right;
     word-break: break-all;
+    font-size: 1rem;
+    /* color: #fff; */
 }
 
-.chat .chat-history .other-message:after {
-    border-bottom-color: #e8f1f3;
-    left: 93%
+
+.chat-send  {
+    background: var(--primary-color);
 }
 
 .online,
@@ -232,7 +248,7 @@
         /* height: 465px; */
         width: 100%;
         /* overflow-x: auto; */
-        background: #fff;
+        background: var(--primary-color);
         /* left: -400px;
         display: none */
     }

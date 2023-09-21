@@ -3,7 +3,6 @@ export const COLLECTIONS = {
     USER_CHAT_DATA: "User_Chat_Data",
     CONVERSATIONS: "Conversations",
     CHANNEL: "Channel",
-
 }
 
 export const STRINGS_DATA = {
@@ -11,7 +10,8 @@ export const STRINGS_DATA = {
     EMPTY_STRING: "",
     TOP: "top",
     CENTER: "center",
-    UPLOAD_FILE: "Upload file"
+    UPLOAD_FILE: "Upload file",
+    LOGGED_IN_SUCCESS: "Logged-In Successfully"
 }
 
 export const RESPONSIVE = {

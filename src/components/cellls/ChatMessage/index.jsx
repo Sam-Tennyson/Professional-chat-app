@@ -13,7 +13,10 @@ import { db } from '../../../firebase';
 import { COLLECTIONS, STRINGS_DATA } from '../../../shared/Constants';
 import ReactEmoji from '../../atoms/ReactEmoji';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faKeyboard, faSearch, faSmile } from '@fortawesome/free-solid-svg-icons';
+import { faKeyboard, faPaperPlane, faSearch, faSmile } from '@fortawesome/free-solid-svg-icons';
+
+// styles
+import "./style.css"
 
 const ChatMessage = ({ scroll }) => {
 	const [message, setMessage] = useState("");
@@ -72,7 +75,7 @@ const ChatMessage = ({ scroll }) => {
 	};
 	return (
 		<>
-			<div className="input-group mb-0">
+			<div className="my-input-group mb-0  d-flex justify-content-between align-items-center position-relative">
 				<input 
 					type="text" 
 					value={message}
@@ -85,18 +88,22 @@ const ChatMessage = ({ scroll }) => {
 						<i className="fa fa-cogs" 
 							onClick={() => setToggleEmoji((prev) => !prev)}
 						> 
-                            <FontAwesomeIcon icon={faKeyboard} />
+                            <FontAwesomeIcon icon={faKeyboard} color='#fff'/>
                         </i>
 					</>
 				) :(
 					<i className="fa fa-cogs" 
 						onClick={() => setToggleEmoji((prev) => !prev)}
 					> 
-						<FontAwesomeIcon icon={faSmile} />
+						<FontAwesomeIcon icon={faSmile} color='#fff' />
 					</i>
 				)}
 				<div className="input-group-prepend margin-search cursor-pointer" onClick={debouncedSendMessage}>
-					<span className="input-group-text">Send</span>
+					{/* <span className="input-group-text">Send</span> */}
+					<span className='rounded'>
+
+						<FontAwesomeIcon icon={faPaperPlane} color='#fff'  />
+					</span>
 				</div>
 			</div>
 				{toggleEmoji &&<ReactEmoji 

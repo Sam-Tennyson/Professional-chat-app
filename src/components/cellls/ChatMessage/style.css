@@ -1,0 +1,30 @@
+.my-input-group .form-control {
+    /* background: var(--secondary-color);
+    color: #fff; */
+    width: 100%;
+    padding-left: 30px;
+    /* &:focus {
+        box-shadow: 0 0.125rem 0.25rem rgba(165, 163, 174, 0.3);
+		background: var(--secondary-color);
+		color: #fff;
+		outline: 0;
+	}
+    &::placeholder {
+        color: #fff;
+    } */
+}
+/* 
+.my-input-group .input-group-prepend {
+    width: 10%;
+} */
+
+.my-input-group .input-group-prepend span{
+    padding: 10px;
+    background: var(--primary-color);
+    border-radius: 8px;
+} 
+
+.my-input-group i svg path {
+    color: var(--primary-color);
+}
+

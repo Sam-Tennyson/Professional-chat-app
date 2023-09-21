@@ -4,7 +4,7 @@ import "./style.css"
 const AppLayout = ({ children }) => {
 	return (
 		<>
-			<div className="container ">
+			<div className="container layout-class">
 				<Gossip />
 				{children}
 			</div>

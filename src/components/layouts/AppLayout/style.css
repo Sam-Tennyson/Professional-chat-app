@@ -4,8 +4,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
 } */
+
+.layout-class {
+    height: 100vh;
+}
+
 .login-class {
-    color: rgb(178, 93, 51) !important;
+    color: var(--primary-color) !important;
+    /* padding: 2px; */
+    /* background: #000; */
+    /* border: 1px solid var(--secondary-color); */
+    border-radius: 8px;
 }
 
 .make-flex-center {
@@ -25,4 +34,18 @@
     padding: 2px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.make-center-absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.my-btn-outline-danger {
+    color: var(--primary-color);
+    padding: 5px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--primary-color);
 }

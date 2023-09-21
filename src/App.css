@@ -1,13 +1,5 @@
 /* App.css */
-body {
-    margin: 0; /* Reset margin to avoid unwanted spacing */
-    padding: 0; /* Reset padding */
-}
 
-#root {
-    height: 100% !important;
-    width: 100% !important;
-}
 
 
 

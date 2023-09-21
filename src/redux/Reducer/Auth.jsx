@@ -38,9 +38,9 @@ const Auth = (state={...initial}, action)=> {
                 ...state,
                 receiver_id: action?.payload?.receiver_id,
                 chat_id: action?.payload?.chat_id,
-                chat_ID: state.user_data.uid > action.payload.receiver_id
-                ? state.user_data.uid + action.payload.receiver_id
-                : action.payload.receiver_id + state.user_data.uid,
+                chat_ID: state?.user_data?.uid > action?.payload?.receiver_id
+                ? state?.user_data?.uid + action?.payload?.receiver_id
+                : action?.payload?.receiver_id + state?.user_data?.uid,
             }
         default:
             return state

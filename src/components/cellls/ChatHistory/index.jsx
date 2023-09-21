@@ -12,6 +12,10 @@ import { db } from "../../../firebase";
 // constants
 import { COLLECTIONS, STRINGS_DATA } from "../../../shared/Constants";
 import { setChatId } from "../../../redux/Actions/Auth";
+import { IMAGES } from "../../../shared/Images";
+
+// styles
+import "./style.css"
 
 const ChatHistory = () => {
 
@@ -45,10 +49,15 @@ const ChatHistory = () => {
                 {messages?.length ? (<>
                     {messages.map((item) => (
                         <li className="clearfix" key={item?.id}>
-                            <div className={`message other-message  ${ userReducer?.uid === item?.senderId?"float-right": ""}`}> {item?.content} </div>
+                            <div className={`message other-message  ${ userReducer?.uid === item?.senderId?"float-right chat-send ": ""}`}> {item?.content} </div>
                         </li>
                     ))}
-                </>):<div className="text-center">Be the first to start conversation</div>}
+                </>):(
+                    <div className="text-center py-0 start-conversation">
+                        <img src={IMAGES.gossip_image} alt="gossip_image" />
+                        <p>Be the first to start conversation</p>
+                    </div>
+                )}
             </ul>
         </>
     )

@@ -12,9 +12,3 @@
 .chat-message i svg:hover {
     cursor: pointer;
 }
-
-
-
-.chat-message i svg path {
-    color: grey;
-}

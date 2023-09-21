@@ -25,7 +25,7 @@ const Home = () => {
 			<div className="row clearfix position-relative my-2">
 				<div className="col-lg-12">
 					<div className="card chat-app ">
-						<div id="plist" className={`people-list ${selectedUser || profileClick ? "d-none d-sm-block": ""}`}>
+						<div id="plist" className={`rounded people-list ${selectedUser || profileClick ? "d-none d-sm-block": ""}`}>
 							<Sidebar
 								setSelectedUser={setSelectedUser}
 								setProfileClick={setProfileClick}
@@ -33,7 +33,7 @@ const Home = () => {
 						</div>
 						{selectedUser  ? (
 							<div className="chat">
-								<div className="chat-header clearfix">
+								<div className="chat-header clearfix rounded">
 									<ChatHeader
 										selectedUser={selectedUser}
 										setSelectedUser={setSelectedUser}
@@ -57,8 +57,10 @@ const Home = () => {
 											setSelectedUser={setSelectedUser}
 										/>
 									): (
-
-										<img src={IMAGES?.chatSvg} alt="chat_svg" />
+										<div className='text-center'>
+											<img src={IMAGES?.gossip_image} alt="chat_svg" />
+											<div>Chat Now !!! 🎉✨</div>
+										</div>
 									)}
 								</div>
 							</div>

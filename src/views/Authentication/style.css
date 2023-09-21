@@ -1,0 +1,11 @@
+em .google-icon-class {
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid gray;
+    outline: none;
+}
+
+.side-color em img {
+    width: 80%;
+    margin: auto;
+}
