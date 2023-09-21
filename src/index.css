@@ -28,6 +28,7 @@ body {
 	height: 100% !important;
 	width: 100% !important;
 	background: rgb(216, 209, 209);
+	font-size: 1rem;
 	/* background: var(--primary-color); */
 	/* background: linear-gradient(#e66465, #9198e5); */
 }
@@ -80,6 +81,12 @@ body {
 		background-color: #fff;
 		color: #6f6b7d;
 		outline: 0;
+	}
+}
+
+@media (max-width: 768px) {
+	.form-control {
+		font-size: 0.8rem;
 	}
 }
 

@@ -107,12 +107,12 @@ function Login() {
 	return (
 		<>
 
-			<div className="mt-4 commonBox p-2">
+			<div className="mt-4 commonBox p-2	">
 				<div className="row">
 					<div className="col-12 m-auto">
 						<div className="card-group  mb-0">
-							<div className="card postion-relative p-4">
-								<div className="card-body login-class ">
+							<div className="card postion-relative p-md-4 p-sm-2">
+								<div className="px-3 py-3 login-class ">
 								{/* <div className="d-flex justify-content-center align-items-center">
 
 								<button onClick={handleGoogleSignIn} className="btn-primary">
@@ -124,7 +124,7 @@ function Login() {
 										<h1>Login</h1>
 										<p >Webcome back! Please enter your details</p>
 									</div>
-									<div className="mb-3">
+									<div className="mb-3 form-group">
 										<label className='text-start' htmlFor="email">Email</label>
 										<span className="input-group-addon"><i className="fa fa-user"></i></span>
 										<input

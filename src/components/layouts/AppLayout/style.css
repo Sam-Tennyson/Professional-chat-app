@@ -17,6 +17,18 @@
     border-radius: 8px;
 }
 
+@media (max-width: 768px) {
+    .login-class {
+        font-size: 0.9rem;
+    }
+    h1  {
+        font-size: 0.9rem;
+    }
+    .form-group {
+        font-size: 0.8rem;
+    }
+}
+
 .make-flex-center {
     display: flex;
     justify-content: center;
